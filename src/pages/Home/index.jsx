@@ -3,6 +3,7 @@ import Table from '../../components/Table/index.jsx';
 
 import { getLeads, getTiposEstadoCivil } from '../../services/api';
 import { Base } from '../baseStyles';
+import { BsPencil, BsTrash } from 'react-icons/bs';
 function Home() {
   const [leads, setLeads] = useState([]);
   const [maritalStatus, setMaritalStatus] = useState([]);
@@ -31,6 +32,12 @@ function Home() {
             {leads?.map((lead, key) => {
               return (
                 <>
+                  <td key={key}>
+                    <BsPencil />
+                  </td>
+                  <td key={key}>
+                    <BsTrash />
+                  </td>
                   <td key={key}>{lead.id}</td>
                   <td key={key}>{lead.cpf}</td>
                   <td key={key}>{lead.email}</td>
