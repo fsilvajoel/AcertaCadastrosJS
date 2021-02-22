@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Table from '../../components/Table/index.jsx';
 
-import { getLeads, getTiposEstadoCivil } from '../../shared/services/api';
+import { getLeads, getTiposEstadoCivil } from '../../services/api';
 import { Base } from '../baseStyles';
 function Home() {
   const [leads, setLeads] = useState([]);
