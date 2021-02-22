@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Table from '../../components/Table/index.jsx';
 
 import { getLeads, getTiposEstadoCivil } from '../../shared/services/api';
 import { Base } from '../baseStyles';
 function Home() {
   const [leads, setLeads] = useState([]);
   const [maritalStatus, setMaritalStatus] = useState([]);
+  const tableHead = ['ID', 'CPF', 'EMAIL', 'ESTADO CIVIL', 'NOME CONJUGUE'];
 
   useEffect(() => {
     getLeads().then((data) => {
@@ -18,19 +20,27 @@ function Home() {
     });
   }, []);
   console.log('leads', leads);
-  console.log('setMaritalStatus', maritalStatus);
+  // console.log('setMaritalStatus', maritalStatus);
   return (
     <>
       <Base>
         <h1>Tela de Consulta</h1>
-        {/* {leads.length && (
-          <>
-            <h1> hello</h1>
+        <>
+          <h1> Listagem de Leads</h1>
+          <Table columns={tableHead}>
             {leads?.map((lead, key) => {
-              return <h1 key={key}>{lead}</h1>;
+              return (
+                <>
+                  <td key={key}>{lead.id}</td>
+                  <td key={key}>{lead.cpf}</td>
+                  <td key={key}>{lead.email}</td>
+                  <td key={key}>{lead.estadoCivil}</td>;<td key={key}>{lead.nome}</td>
+                  <td key={key}>{lead.nomeConjugue}</td>;
+                </>
+              );
             })}
-          </>
-        )} */}
+          </Table>
+        </>
       </Base>
     </>
   );
